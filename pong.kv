@@ -1,0 +1,69 @@
+
+<CustButton@Button>:
+	font_family: "Chalkboard"
+	color: 1, 1, 1, 1
+	size: 100, 100
+	background_normal: ''
+	background_color: 0.255, 0.506, 0.93, 1
+	anchor_x: 'center'
+	anchor_y: 'center'
+    
+
+<Label>:
+	color: 0,0,0,1
+	font_size: 70
+
+<PongPaddle>:
+    size: 200, 20
+    canvas:
+        Color:
+            rgb: 44/255, 53/255, 113/255
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+<Background>:
+    ball: pong_ball
+    player1: player_top
+    player2: player_bottom
+    p1label: "0"
+    p2label: "0"
+
+	canvas:
+		Color:
+			rgb: 0,0.8,1
+        Rectangle:
+        	pos: 0, self.center_y - 5
+        	size: self.width, 10
+
+    Label:
+        id: p2label
+        text: root.p2label
+        center_y: root.height / 4
+        top: root.top - 50
+    Label:
+        id: p1label
+        text: root.p1label
+        center_y: root.height * 3 / 4
+        top: root.top - 50
+    PongBall:
+        id: pong_ball
+        center: self.parent.center
+    PongPaddle:
+        id: player_top
+        center_x: root.center_x
+        center_y: root.height - 10
+    PongPaddle:
+        id: player_bottom
+        center_x: root.center_x
+        center_y: 10
+            
+<PongBall>:
+    size: 50, 50
+    canvas:
+    	Color:
+    		rgb: 0,0,0
+        Ellipse:
+            pos: self.pos
+            size: self.size
+
